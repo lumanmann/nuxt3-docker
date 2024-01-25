@@ -2,8 +2,9 @@ version: '3.8'
 services:
   frontend:
     container_name: frontend
-    restart: on-failure
     build:
+      # 新增這一行，指定到 Dockerfile folder 裡面的 Dockerfile
+      dockerfile: Dockerfile/Dockerfile
       context: .
       args:
         - NODE_VERSION=${DOCKER_NODE_VERSION}
