@@ -1,13 +1,17 @@
+
 <template>
-  <h1>{{ count }}</h1>
+  <div>
+    <p>{{ count }}</p>
+    <button type="btn" @click="increment">add 1</button>
+  </div>
   <div>
     <NuxtWelcome />
   </div>
 </template>
 
 
-<script setup lang="ts">
+<script setup>
+import useCounter from './src/composables/useCounter.ts';
 
-let count = 2024
-
+const { count, increment } = useCounter();
 </script>
