@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: frontend
+    restart: on-failure
+    build:
+      context: .
+      args:
+        - NODE_VERSION=${DOCKER_NODE_VERSION}
+    ports:
+      # 把本機的 port 跟 container 的 port 綁定
+      - '${DOCKER_HOST_MACHINE_PORT}:3000'
+    volumes:
+      - .:/app
+    command: node .output/server/index.mjs
+    tty: true
+    stdin_open: true
